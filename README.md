@@ -1,9 +1,13 @@
 # gelatin
 
 Golang skeleton app = Go + Skeleton => Gelatin
-Vue.js frontend
-PostgreSQL DB
-SqlBoiler ORM
+
+The stack includes:
+- Vue.js frontend
+- PostgreSQL DB
+- Migrations
+- SqlBoiler ORM
+- Bash scripts to tie it all together!
 
 ## Getting started
 
