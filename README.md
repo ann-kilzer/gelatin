@@ -3,10 +3,12 @@
 Golang skeleton app = Go + Skeleton => Gelatin
 
 The stack includes:
+- Vuetify layout and a few components (still under development)
 - Vue.js frontend
+- Echo framework
+- SqlBoiler ORM
 - PostgreSQL DB
 - Migrations
-- SqlBoiler ORM
 - Bash scripts to tie it all together!
 
 ## Getting started
