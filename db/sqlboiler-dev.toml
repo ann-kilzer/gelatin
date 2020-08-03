@@ -1,0 +1,8 @@
+[psql]
+dbname = "gelatin"
+host   = "localhost"
+port   = 5432
+user   = "otto"
+pass   = "letmeinnow"
+blacklist = ["migrations"]
+sslmode = "disable"
