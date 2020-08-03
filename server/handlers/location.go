@@ -25,7 +25,7 @@ func CreateLocation(c echo.Context) error {
 
 	var p models.Location
 	p.LocationName = payload.Name
-	p.Name = payload.Name
+	p.Name = payload.LocationName
 	p.Softness = payload.Softness
 	err := p.Insert(context.TODO(), dbFromContext(c), boil.Infer())
 	if err != nil {
@@ -73,7 +73,7 @@ func UpdateLocation(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusNotFound, err.Error())
 	}
-	p.Name = payload.Name
+	p.Name = payload.LocationName
 	p.Softness = payload.Softness
 	_, err = p.Update(context.TODO(), db, boil.Infer())
 	if err != nil {
