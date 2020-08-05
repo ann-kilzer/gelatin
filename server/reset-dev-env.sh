@@ -28,9 +28,13 @@ done
 
 if [ $db_flag ]; then
     echo "Resetting the database 👯."
-    dropdb ${DB_NAME}
+    if [ "$( psql -d "postgres" -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_NAME'" )" = '1' ]
+    then
+        dropdb ${DB_NAME}
+    fi
+    
     createdb ${DB_NAME}
-    psql -U "otto" -d "postgres" -c "GRANT ALL ON DATABASE gelatin TO otto;"
+    psql -d "postgres" -c "GRANT ALL ON DATABASE $DB_NAME TO otto;"
 fi
 
 echo "Running 🏃migrations"

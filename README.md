@@ -23,7 +23,7 @@ Requirements:
 
 ### Initial DB Setup
 
-We create an "otto" user to get around OS X postgres weirdness. Replace with a strong password for production environments
+We create an ["otto"](https://en.wikipedia.org/wiki/Automan) user to get around OS X postgres weirdness. Replace with a strong password for production environments
 ```
 psql
 CREATE USER otto password 'letmeinnow';
