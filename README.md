@@ -1,3 +1,5 @@
+![go report card](https://goreportcard.com/report/github.com/ann-kilzer/gelatin)
+
 # gelatin
 
 Golang skeleton app = Go + Skeleton => Gelatin
