@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/ann-kilzer/gelatin/app"
-	"github.com/ann-kilzer/gelatin/db"
+	"github.com/ann-kilzer/gelatin/database"
 	"github.com/ann-kilzer/gelatin/handlers"
 
 	"github.com/labstack/echo/v4"
@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	db, err := db.ConnectToDB(db.DefaultConfig())
+	db, err := database.ConnectToDB(database.DefaultConfig())
 	if err != nil {
 		panic(err)
 	}

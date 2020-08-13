@@ -1,4 +1,4 @@
-package db
+package database
 
 import (
 	"database/sql"
@@ -21,6 +21,16 @@ func DefaultConfig() Config {
 		user:     "otto",
 		password: "letmeinnow",
 		dbname:   "gelatin",
+		sslmode:  "disable",
+	}
+}
+
+// TestConfig builds an API testing config
+func TestConfig() Config {
+	return Config{
+		user:     "otto",
+		password: "letmeinnow",
+		dbname:   "gelatin_test",
 		sslmode:  "disable",
 	}
 }

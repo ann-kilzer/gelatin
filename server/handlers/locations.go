@@ -5,13 +5,14 @@ import (
 	"net/http"
 
 	gm "github.com/ann-kilzer/gelatin/genmodels"
+	"github.com/ann-kilzer/gelatin/models"
 	"github.com/labstack/echo/v4"
 	"github.com/volatiletech/sqlboiler/v4/boil"
 )
 
 // Location is the json request body for a location you can sleep
 type Location struct {
-	ID       string `json:"id" form:"name" query:"name"`
+	ID       int    `json:"id" form:"name" query:"name"`
 	Name     string `json:"name" form:"name" query:"name"`
 	Softness int    `json:"softness" form:"email" query:"email"`
 }
@@ -23,14 +24,11 @@ func CreateLocation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	var p gm.Location
-	p.LocationName = payload.Name
-	p.Softness = payload.Softness
-	err := p.Insert(context.TODO(), dbFromContext(c), boil.Infer())
+	p, err := models.CreateLocation(dbFromContext(c), payload.Name, payload.Softness)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
-	return c.JSON(http.StatusCreated, p)
+	return c.JSON(http.StatusCreated, Location{ID: p.ID, Name: p.LocationName, Softness: p.Softness})
 }
 
 // GetLocation retrieves one location by ID
@@ -48,10 +46,15 @@ func GetLocation(c echo.Context) error {
 
 // GetLocations retrieves all locations in the system
 func GetLocations(c echo.Context) error {
-	locations, err := gm.Locations().All(context.TODO(), dbFromContext(c))
+	rawLocations, err := gm.Locations().All(context.TODO(), dbFromContext(c))
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
+	locations := []Location{}
+	for _, rl := range rawLocations {
+		locations = append(locations, Location{ID: rl.ID, Name: rl.LocationName, Softness: rl.Softness})
+	}
+
 	return c.JSON(http.StatusOK, locations)
 }
 

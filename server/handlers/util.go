@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// TODO: refactor into model package
 func dbFromContext(c echo.Context) *sql.DB {
 	return c.(*app.Context).DB
 }
