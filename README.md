@@ -1,4 +1,8 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/ann-kilzer/gelatin)](https://goreportcard.com/report/github.com/ann-kilzer/gelatin)
+![GitHub](https://img.shields.io/github/license/ann-kilzer/gelatin)
+![GitHub language count](https://img.shields.io/github/languages/count/ann-kilzer/gelatin)
+
+
 
 # gelatin
 
