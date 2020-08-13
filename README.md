@@ -1,4 +1,4 @@
-![go report card](https://goreportcard.com/report/github.com/ann-kilzer/gelatin)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ann-kilzer/gelatin)](https://goreportcard.com/report/github.com/ann-kilzer/gelatin)
 
 # gelatin
 
