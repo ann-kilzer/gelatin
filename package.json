@@ -1,8 +1,7 @@
 {
   "husky": {
     "hooks": {
-      "pre-commit": "echo woof",
-      "pre-push": "echo woof"
+      "pre-commit": "echo 'Running 🐕 Husky hooks' && ./commit.sh"
     }
   },
   "devDependencies": {

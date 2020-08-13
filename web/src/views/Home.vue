@@ -1,6 +1,5 @@
 <template>
-  <page title="My cool page">
-  </page>
+  <page title="My cool page" />
 </template>
 
 <script>
