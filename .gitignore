@@ -15,8 +15,8 @@ gelatin
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-# sqlboiler models
-server/models/
+# sqlboiler genmodels
+server/genmodels/
 
 # Emacs cruft
 *~

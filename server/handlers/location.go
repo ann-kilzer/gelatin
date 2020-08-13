@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/ann-kilzer/gelatin/models"
+	gm "github.com/ann-kilzer/gelatin/genmodels"
 	"github.com/labstack/echo/v4"
 	"github.com/volatiletech/sqlboiler/v4/boil"
 )
@@ -23,7 +23,7 @@ func CreateLocation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	var p models.Location
+	var p gm.Location
 	p.LocationName = payload.Name
 	p.Softness = payload.Softness
 	err := p.Insert(context.TODO(), dbFromContext(c), boil.Infer())
@@ -39,7 +39,7 @@ func GetLocation(c echo.Context) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
-	location, err := models.FindLocation(context.TODO(), dbFromContext(c), params.ID)
+	location, err := gm.FindLocation(context.TODO(), dbFromContext(c), params.ID)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusNotFound, err.Error())
 	}
@@ -48,7 +48,7 @@ func GetLocation(c echo.Context) error {
 
 // GetLocations retrieves all locations in the system
 func GetLocations(c echo.Context) error {
-	locations, err := models.Locations().All(context.TODO(), dbFromContext(c))
+	locations, err := gm.Locations().All(context.TODO(), dbFromContext(c))
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
@@ -68,7 +68,7 @@ func UpdateLocation(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 
-	p, err := models.FindLocation(context.TODO(), db, params.ID)
+	p, err := gm.FindLocation(context.TODO(), db, params.ID)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusNotFound, err.Error())
 	}
