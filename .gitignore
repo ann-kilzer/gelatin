@@ -22,3 +22,5 @@ server/genmodels/
 *~
 
 .vscode
+
+node_modules
